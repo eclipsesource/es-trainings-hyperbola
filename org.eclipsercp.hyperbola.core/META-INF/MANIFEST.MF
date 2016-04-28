@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Core
+Bundle-SymbolicName: org.eclipsercp.hyperbola.core
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.eclipsercp.hyperbola.core.Activator
+Require-Bundle: org.eclipse.core.runtime
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: org.eclipsercp.hyperbola.model
