@@ -16,6 +16,7 @@
 package org.eclipsercp.hyperbola;
 
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
@@ -34,6 +35,13 @@ public class Activator extends AbstractUIPlugin {
 	 * The constructor
 	 */
 	public Activator() {
+	}
+
+	@Override
+	protected void initializeImageRegistry(ImageRegistry reg) {
+		reg.put(IImageKeys.GROUP, getImageDescriptor(IImageKeys.GROUP));
+		reg.put(IImageKeys.ONLINE, getImageDescriptor(IImageKeys.ONLINE));
+		reg.put(IImageKeys.OFFLINE, getImageDescriptor(IImageKeys.OFFLINE));
 	}
 
 	/*
