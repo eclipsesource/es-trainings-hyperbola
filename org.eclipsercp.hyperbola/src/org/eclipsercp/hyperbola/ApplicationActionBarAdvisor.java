@@ -32,6 +32,8 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 	private IAction exitAction;
 	private IAction aboutAction;
 	private IAction addContactAction;
+	private IAction chatAction;
+	private IAction saveAction;
 
 	public ApplicationActionBarAdvisor(IActionBarConfigurer configurer) {
 		super(configurer);
@@ -44,11 +46,17 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 		register(aboutAction);
 		addContactAction = new AddContactAction(window);
 		register(addContactAction);
+		chatAction = new ChatAction(window);
+		register(chatAction);
+		saveAction = ActionFactory.SAVE.create(window);
+		register(saveAction);
 	}
 
 	protected void fillMenuBar(IMenuManager menuBar) {
 		MenuManager fileMenu = new MenuManager("&File", "file");
 		fileMenu.add(addContactAction);
+		fileMenu.add(chatAction);
+		fileMenu.add(saveAction);
 		fileMenu.add(new Separator());
 		fileMenu.add(exitAction);
 		menuBar.add(fileMenu);
@@ -62,6 +70,8 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 	protected void fillCoolBar(ICoolBarManager coolBar) {
 		ToolBarManager toolbar = new ToolBarManager();
 		toolbar.add(addContactAction);
+		toolbar.add(chatAction);
+		toolbar.add(saveAction);
 		coolBar.add(new ToolBarContributionItem(toolbar, "hyperbola"));
 	}
 
