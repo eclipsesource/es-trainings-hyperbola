@@ -31,6 +31,7 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.EditorPart;
 
 public class ChatEditor extends EditorPart {
@@ -112,6 +113,9 @@ public class ChatEditor extends EditorPart {
 				entry.setFocus();
 			}
 		});
+
+		PlatformUI.getWorkbench().getHelpSystem()
+				.setHelp(top, "org.eclipsercp.hyperbola.help.chatEditor");
 	}
 
 	private String getUser() {

@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Hyperbola Help
+Bundle-SymbolicName: org.eclipsercp.hyperbola.help; singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Require-Bundle: org.eclipse.help.ui;bundle-version="3.5.201",
+ org.eclipse.help.webapp;bundle-version="3.6.101",
+ org.eclipse.equinox.http.jetty;bundle-version="3.0.1"

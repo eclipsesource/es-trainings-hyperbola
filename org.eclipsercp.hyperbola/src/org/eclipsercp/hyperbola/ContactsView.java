@@ -22,6 +22,7 @@ import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
 import org.eclipsercp.hyperbola.model.ContactsEntry;
 import org.eclipsercp.hyperbola.model.ContactsGroup;
@@ -81,6 +82,12 @@ public class ContactsView extends ViewPart {
 				}
 			}
 		});
+
+		PlatformUI
+				.getWorkbench()
+				.getHelpSystem()
+				.setHelp(treeViewer.getControl(),
+						"org.eclipsercp.hyperbola.help.contactsView");
 	}
 
 	@Override

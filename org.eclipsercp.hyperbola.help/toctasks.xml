@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="Tasks" link_to="toc.xml#tasks"> 
+	<topic label="Managing Contacts"  href="html/tasks/managingContacts.html"> 
+	</topic>
+	<topic href="html/tasks/groupingContacts.html" label="Grouping Contacts">
+	</topic> 
+</toc>

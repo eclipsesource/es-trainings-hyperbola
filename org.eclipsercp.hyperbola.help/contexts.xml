@@ -1,0 +1,17 @@
+<contexts>
+ <context id="contactsView">
+   <description>This is the Contacts View</description>
+   <topic
+     label="Managing Contacts"
+     href="html/tasks/managingContacts.html" />
+   <topic
+     label="Grouping Contacts"
+     href="html/tasks/groupingContacts.html" />
+ </context>
+ <context id="chatEditor">
+    <description>This is the Chat Editor</description>
+    <topic 
+      label="Getting started"
+      href="html/gettingstarted/maintopic.html" />
+ </context>
+</contexts>

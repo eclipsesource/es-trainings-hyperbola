@@ -36,7 +36,7 @@
             default="false"
             icon="icons/chat.gif"
             id="org.eclipsercp.hyperbola.editors.chat"
-            name="Chat">
+            name="Chat Editor">
       </editor>
    </extension>
    <extension

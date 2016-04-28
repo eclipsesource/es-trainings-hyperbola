@@ -31,6 +31,8 @@ import org.eclipse.ui.application.IActionBarConfigurer;
 public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 
 	private IAction exitAction;
+	private IAction helpAction;
+	private IAction dynamicHelpAction;
 	private IAction aboutAction;
 	private IAction addContactAction;
 	private IAction chatAction;
@@ -43,6 +45,10 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 	protected void makeActions(IWorkbenchWindow window) {
 		exitAction = ActionFactory.QUIT.create(window);
 		register(exitAction);
+		helpAction = ActionFactory.HELP_CONTENTS.create(window);
+		register(helpAction);
+		dynamicHelpAction = ActionFactory.DYNAMIC_HELP.create(window);
+		register(dynamicHelpAction);
 		aboutAction = ActionFactory.ABOUT.create(window);
 		register(aboutAction);
 		addContactAction = new AddContactAction(window);
@@ -64,6 +70,10 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 		menuBar.add(fileMenu);
 
 		MenuManager helpMenu = new MenuManager("&Help", "help");
+		helpMenu.add(helpAction);
+		helpMenu.add(dynamicHelpAction);
+		helpMenu.add(new GroupMarker("additions"));
+		helpMenu.add(new Separator());
 		helpMenu.add(aboutAction);
 		menuBar.add(helpMenu);
 	}
