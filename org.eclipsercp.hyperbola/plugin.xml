@@ -39,5 +39,29 @@
             name="Chat">
       </editor>
    </extension>
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.eclipsercp.hyperbola.application"
+            name="Hyperbola">
+         <property
+               name="appName"
+               value="Hyperbola">
+         </property>
+         <property
+               name="aboutImage"
+               value="branding/about.gif">
+         </property>
+         <property
+               name="aboutText"
+               value="Hyperbola Chat&#x0A;&#x0A;Version 1.0.0&#x0A;&#x0A;(c) Copyright 2005-2013, Jeff Mc Affer, &#x0A;Jean-Michel Lemieux and others.&#x0A;All rights reserved.">
+         </property>
+         <property
+               name="windowImages"
+               value="branding/hyperbola16.gif,branding/hyperbola32.gif">
+         </property>
+      </product>
+   </extension>
 
 </plugin>
