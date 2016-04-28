@@ -15,12 +15,17 @@
  *******************************************************************************/
 package org.eclipsercp.hyperbola;
 
+import org.eclipse.jface.action.IStatusLineManager;
+import org.eclipse.jface.viewers.ISelectionChangedListener;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.ViewPart;
 import org.eclipsercp.hyperbola.model.ContactsEntry;
 import org.eclipsercp.hyperbola.model.ContactsGroup;
+import org.eclipsercp.hyperbola.model.IContactsListener;
 import org.eclipsercp.hyperbola.model.Session;
 
 public class ContactsView extends ViewPart {
@@ -53,6 +58,29 @@ public class ContactsView extends ViewPart {
 		treeViewer.setLabelProvider(new HyperbolaLabelProvider());
 		treeViewer.setUseHashlookup(true);
 		treeViewer.setInput(session.getRoot());
+
+		getSite().setSelectionProvider(treeViewer);
+		session.getRoot().addContactsListener(new IContactsListener() {
+			public void contactsChanged(ContactsGroup contacts,
+					ContactsEntry entry) {
+				treeViewer.refresh(contacts);
+			}
+		});
+
+		treeViewer.addSelectionChangedListener(new ISelectionChangedListener() {
+			public void selectionChanged(SelectionChangedEvent event) {
+				IStatusLineManager statusLine = getViewSite().getActionBars()
+						.getStatusLineManager();
+				IStructuredSelection sSelection = (IStructuredSelection) event
+						.getSelection();
+				if (sSelection.isEmpty()) {
+					statusLine.setMessage("");
+				} else {
+					statusLine.setMessage(sSelection.size()
+							+ " item(s) selected");
+				}
+			}
+		});
 	}
 
 	@Override

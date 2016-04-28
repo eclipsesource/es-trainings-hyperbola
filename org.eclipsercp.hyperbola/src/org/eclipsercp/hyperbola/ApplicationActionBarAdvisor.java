@@ -15,21 +15,54 @@
  *******************************************************************************/
 package org.eclipsercp.hyperbola;
 
+import org.eclipse.jface.action.IAction;
+import org.eclipse.jface.action.ICoolBarManager;
 import org.eclipse.jface.action.IMenuManager;
+import org.eclipse.jface.action.MenuManager;
+import org.eclipse.jface.action.Separator;
+import org.eclipse.jface.action.ToolBarContributionItem;
+import org.eclipse.jface.action.ToolBarManager;
 import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.actions.ActionFactory;
 import org.eclipse.ui.application.ActionBarAdvisor;
 import org.eclipse.ui.application.IActionBarConfigurer;
 
 public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
+
+	private IAction exitAction;
+	private IAction aboutAction;
+	private IAction addContactAction;
 
 	public ApplicationActionBarAdvisor(IActionBarConfigurer configurer) {
 		super(configurer);
 	}
 
 	protected void makeActions(IWorkbenchWindow window) {
+		exitAction = ActionFactory.QUIT.create(window);
+		register(exitAction);
+		aboutAction = ActionFactory.ABOUT.create(window);
+		register(aboutAction);
+		addContactAction = new AddContactAction(window);
+		register(addContactAction);
 	}
 
 	protected void fillMenuBar(IMenuManager menuBar) {
+		MenuManager fileMenu = new MenuManager("&File", "file");
+		fileMenu.add(addContactAction);
+		fileMenu.add(new Separator());
+		fileMenu.add(exitAction);
+		menuBar.add(fileMenu);
+
+		MenuManager helpMenu = new MenuManager("&Help", "help");
+		helpMenu.add(aboutAction);
+		menuBar.add(helpMenu);
+	}
+
+	@Override
+	protected void fillCoolBar(ICoolBarManager coolBar) {
+		ToolBarManager toolbar = new ToolBarManager();
+		toolbar.add(addContactAction);
+		coolBar.add(new ToolBarContributionItem(toolbar, "hyperbola"));
 	}
 
 }
