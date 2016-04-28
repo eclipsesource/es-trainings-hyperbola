@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Hyperbola" uid="org.eclipsercp.hyperbola.product" id="org.eclipsercp.hyperbola.product" application="org.eclipsercp.hyperbola.application" version="1.0.0" useFeatures="false" includeLaunchers="true">
+<product name="Hyperbola" uid="org.eclipsercp.hyperbola.product" id="org.eclipsercp.hyperbola.product" application="org.eclipsercp.hyperbola.application" version="1.0.0" useFeatures="true" includeLaunchers="true">
 
    <aboutInfo>
       <image path="/org.eclipsercp.hyperbola/branding/about.gif"/>
@@ -36,7 +36,6 @@ All rights reserved.
          <bmp/>
       </win>
    </launcher>
-
 
    <vm>
    </vm>
@@ -80,6 +79,10 @@ All rights reserved.
       <plugin id="org.eclipse.ui.workbench"/>
       <plugin id="org.eclipsercp.hyperbola"/>
    </plugins>
+
+   <features>
+      <feature id="org.eclipsercp.hyperbola.feature"/>
+   </features>
 
 
 </product>
