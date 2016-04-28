@@ -15,16 +15,23 @@
  *******************************************************************************/
 package org.eclipsercp.hyperbola;
 
-import org.eclipse.ui.IPageLayout;
-import org.eclipse.ui.IPerspectiveFactory;
-import org.eclipse.ui.IViewLayout;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.ui.part.ViewPart;
 
-public class Perspective implements IPerspectiveFactory {
+public class ContactsView extends ViewPart {
 
-	public void createInitialLayout(IPageLayout layout) {
-		layout.addView(ContactsView.ID, IPageLayout.LEFT, 0.33f,
-				layout.getEditorArea());
-		IViewLayout contactsView = layout.getViewLayout(ContactsView.ID);
-		contactsView.setCloseable(false);
+	public static final String ID = "org.eclipsercp.hyperbola.views.contacts";
+
+	@Override
+	public void createPartControl(Composite parent) {
+		// TODO Auto-generated method stub
+
 	}
+
+	@Override
+	public void setFocus() {
+		// TODO Auto-generated method stub
+
+	}
+
 }
