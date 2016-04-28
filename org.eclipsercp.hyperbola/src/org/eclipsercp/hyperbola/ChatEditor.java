@@ -21,6 +21,8 @@ import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
@@ -151,6 +153,12 @@ public class ChatEditor extends EditorPart {
 	@Override
 	public void setFocus() {
 		entry.setFocus();
+	}
+
+	public void setBackgroundColor(RGB rgb) {
+		Color bgColor = new Color(transcript.getDisplay(), rgb);
+		transcript.setBackground(bgColor);
+		bgColor.dispose();
 	}
 
 }

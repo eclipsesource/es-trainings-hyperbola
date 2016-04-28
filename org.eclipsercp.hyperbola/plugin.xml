@@ -63,5 +63,21 @@
          </property>
       </product>
    </extension>
+   <extension
+         point="org.eclipse.ui.editorActions">
+      <editorContribution
+            id="org.eclipsercp.hyperbola.editors.chat.actions"
+            targetID="org.eclipsercp.hyperbola.editors.chat">
+         <action
+               class="org.eclipsercp.hyperbola.BackgroundColorAction"
+               icon="icons/color.png"
+               id="org.eclipsercp.hyperbola.action"
+               label="Background Color"
+               menubarPath="file/additions"
+               style="push"
+               toolbarPath="additions">
+         </action>
+      </editorContribution>
+   </extension>
 
 </plugin>

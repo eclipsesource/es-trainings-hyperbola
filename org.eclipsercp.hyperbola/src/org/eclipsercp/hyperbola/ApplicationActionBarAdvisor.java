@@ -15,6 +15,7 @@
  *******************************************************************************/
 package org.eclipsercp.hyperbola;
 
+import org.eclipse.jface.action.GroupMarker;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.ICoolBarManager;
 import org.eclipse.jface.action.IMenuManager;
@@ -57,6 +58,7 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 		fileMenu.add(addContactAction);
 		fileMenu.add(chatAction);
 		fileMenu.add(saveAction);
+		fileMenu.add(new GroupMarker("additions"));
 		fileMenu.add(new Separator());
 		fileMenu.add(exitAction);
 		menuBar.add(fileMenu);
