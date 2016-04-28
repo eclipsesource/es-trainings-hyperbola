@@ -19,8 +19,11 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IEditorInput;
@@ -72,11 +75,12 @@ public class ChatEditor extends EditorPart {
 		GridLayout layout = new GridLayout();
 		layout.marginWidth = 0;
 		layout.marginHeight = 0;
+		layout.numColumns = 2;
 		top.setLayout(layout);
 
 		transcript = new Text(top, SWT.BORDER | SWT.MULTI | SWT.WRAP);
 		transcript.setLayoutData(new GridData(GridData.FILL, GridData.FILL,
-				true, true));
+				true, true, 2, 1));
 		transcript.setEditable(false);
 		transcript.setBackground(transcript.getDisplay().getSystemColor(
 				SWT.COLOR_INFO_BACKGROUND));
@@ -94,6 +98,16 @@ public class ChatEditor extends EditorPart {
 					sendMessage();
 					event.doit = false;
 				}
+			}
+		});
+
+		Button btnSend = new Button(top, SWT.PUSH);
+		btnSend.setText("&Send");
+		btnSend.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				sendMessage();
+				entry.setFocus();
 			}
 		});
 	}
