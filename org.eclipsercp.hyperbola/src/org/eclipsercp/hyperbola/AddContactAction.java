@@ -18,13 +18,13 @@ package org.eclipsercp.hyperbola;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.window.Window;
+import org.eclipse.jface.wizard.IWizard;
+import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.ui.ISelectionListener;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.actions.ActionFactory.IWorkbenchAction;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
-import org.eclipsercp.hyperbola.model.ContactsEntry;
 import org.eclipsercp.hyperbola.model.ContactsGroup;
 
 public class AddContactAction extends Action implements ISelectionListener,
@@ -60,13 +60,9 @@ public class AddContactAction extends Action implements ISelectionListener,
 
 	@Override
 	public void run() {
-		AddContactDialog dialog = new AddContactDialog(window.getShell());
-		int code = dialog.open();
-		if (code == Window.OK) {
-			ContactsGroup group = (ContactsGroup) sSelection.getFirstElement();
-			ContactsEntry entry = new ContactsEntry(group, dialog.getName(),
-					dialog.getNickname(), dialog.getServer());
-			group.addEntry(entry);
-		}
+		ContactsGroup group = (ContactsGroup) sSelection.getFirstElement();
+		IWizard wizard = new AddContactWizard(group);
+		WizardDialog wd = new WizardDialog(window.getShell(), wizard);
+		wd.open();
 	}
 }
