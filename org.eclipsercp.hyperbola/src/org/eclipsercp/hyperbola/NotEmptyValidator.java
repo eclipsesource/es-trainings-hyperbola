@@ -15,33 +15,24 @@
  *******************************************************************************/
 package org.eclipsercp.hyperbola;
 
-import org.eclipse.jface.wizard.IWizard;
-import org.eclipse.jface.wizard.Wizard;
-import org.eclipsercp.hyperbola.model.ContactsEntry;
-import org.eclipsercp.hyperbola.model.ContactsGroup;
+import org.eclipse.core.databinding.validation.IValidator;
+import org.eclipse.core.databinding.validation.ValidationStatus;
+import org.eclipse.core.runtime.IStatus;
 
-public class AddContactWizard extends Wizard implements IWizard {
+public class NotEmptyValidator implements IValidator {
 
-	private final WizardData data;
-	private final ContactsGroup group;
+	private final String message;
 
-	public AddContactWizard(ContactsGroup group) {
-		this.group = group;
-		this.data = new WizardData();
+	public NotEmptyValidator(String message) {
+		this.message = message;
 	}
 
-	@Override
-	public void addPages() {
-		addPage(new ContactPage(data));
-		addPage(new NicknamePage(data));
-		setWindowTitle("Add Contact");
+	public IStatus validate(Object value) {
+		String str = (String) value;
+		if (str == null || str.trim().length() == 0) {
+			return ValidationStatus.error(message);
+		}
+		return ValidationStatus.ok();
 	}
 
-	@Override
-	public boolean performFinish() {
-		ContactsEntry entry = new ContactsEntry(group, data.getUsername(),
-				data.getNickname(), data.getServer());
-		group.addEntry(entry);
-		return true;
-	}
 }

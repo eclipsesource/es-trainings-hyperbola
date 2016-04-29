@@ -15,10 +15,13 @@
  *******************************************************************************/
 package org.eclipsercp.hyperbola;
 
+import org.eclipse.core.databinding.DataBindingContext;
+import org.eclipse.core.databinding.UpdateValueStrategy;
+import org.eclipse.core.databinding.beans.PojoObservables;
+import org.eclipse.jface.databinding.swt.SWTObservables;
+import org.eclipse.jface.databinding.wizard.WizardPageSupport;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.ModifyEvent;
-import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -27,12 +30,14 @@ import org.eclipse.swt.widgets.Text;
 
 public class NicknamePage extends WizardPage {
 
+	private final WizardData data;
 	private Text txtNick;
 
-	public NicknamePage() {
+	public NicknamePage(WizardData data) {
 		super(NicknamePage.class.getName(), "Enter Contact information",
 				Activator.getImageDescriptor("icons/wizard_banner.png"));
 		setDescription("Enter the user's nickname.");
+		this.data = data;
 	}
 
 	public void createControl(Composite parent) {
@@ -45,24 +50,14 @@ public class NicknamePage extends WizardPage {
 
 		setControl(control);
 		setPageComplete(false);
-		ModifyListener listener = new ModifyListener() {
-			public void modifyText(ModifyEvent e) {
-				checkPage();
-			}
-		};
-		txtNick.addModifyListener(listener);
+
+		DataBindingContext dbc = new DataBindingContext();
+		dbc.bindValue(SWTObservables.observeText(txtNick, SWT.Modify),
+				PojoObservables.observeValue(data, "nickname"),
+				new UpdateValueStrategy()
+						.setBeforeSetValidator(new NotEmptyValidator(
+								"Enter a nickname.")), null);
+		WizardPageSupport.create(this, dbc);
 	}
 
-	public String getNickname() {
-		return txtNick.getText();
-	}
-
-	private void checkPage() {
-		String msg = null;
-		if (txtNick.getText().trim().length() == 0) {
-			msg = "Enter a nickname.";
-		}
-		setPageComplete(msg == null);
-		setErrorMessage(msg);
-	}
 }

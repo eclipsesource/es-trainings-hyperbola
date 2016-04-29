@@ -15,10 +15,13 @@
  *******************************************************************************/
 package org.eclipsercp.hyperbola;
 
+import org.eclipse.core.databinding.DataBindingContext;
+import org.eclipse.core.databinding.UpdateValueStrategy;
+import org.eclipse.core.databinding.beans.PojoObservables;
+import org.eclipse.jface.databinding.swt.SWTObservables;
+import org.eclipse.jface.databinding.wizard.WizardPageSupport;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.ModifyEvent;
-import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -27,13 +30,15 @@ import org.eclipse.swt.widgets.Text;
 
 public class ContactPage extends WizardPage {
 
+	private final WizardData data;
 	private Text txtUser;
 	private Text txtServer;
 
-	public ContactPage() {
+	public ContactPage(WizardData data) {
 		super(ContactPage.class.getName(), "Enter Contact information",
 				Activator.getImageDescriptor("icons/wizard_banner.png"));
 		setDescription("Enter the user's name and server information.");
+		this.data = data;
 	}
 
 	public void createControl(Composite parent) {
@@ -50,31 +55,18 @@ public class ContactPage extends WizardPage {
 
 		setControl(control);
 		setPageComplete(false);
-		ModifyListener listener = new ModifyListener() {
-			public void modifyText(ModifyEvent e) {
-				checkPage();
-			}
-		};
-		txtUser.addModifyListener(listener);
-		txtServer.addModifyListener(listener);
-	}
 
-	public String getUsername() {
-		return txtUser.getText();
-	}
-
-	public String getServer() {
-		return txtServer.getText();
-	}
-
-	private void checkPage() {
-		String msg = null;
-		if (txtUser.getText().trim().length() == 0) {
-			msg = "Enter a user name.";
-		} else if (txtServer.getText().trim().length() == 0) {
-			msg = "Enter a server.";
-		}
-		setPageComplete(msg == null);
-		setErrorMessage(msg);
+		DataBindingContext dbc = new DataBindingContext();
+		dbc.bindValue(SWTObservables.observeText(txtUser, SWT.Modify),
+				PojoObservables.observeValue(data, "username"),
+				new UpdateValueStrategy()
+						.setBeforeSetValidator(new NotEmptyValidator(
+								"Enter a user name.")), null);
+		dbc.bindValue(SWTObservables.observeText(txtServer, SWT.Modify),
+				PojoObservables.observeValue(data, "server"),
+				new UpdateValueStrategy()
+						.setBeforeSetValidator(new NotEmptyValidator(
+								"Enter a server.")), null);
+		WizardPageSupport.create(this, dbc);
 	}
 }

@@ -15,33 +15,33 @@
  *******************************************************************************/
 package org.eclipsercp.hyperbola;
 
-import org.eclipse.jface.wizard.IWizard;
-import org.eclipse.jface.wizard.Wizard;
-import org.eclipsercp.hyperbola.model.ContactsEntry;
-import org.eclipsercp.hyperbola.model.ContactsGroup;
+public class WizardData {
 
-public class AddContactWizard extends Wizard implements IWizard {
+	private String username;
+	private String server;
+	private String nickname;
 
-	private final WizardData data;
-	private final ContactsGroup group;
-
-	public AddContactWizard(ContactsGroup group) {
-		this.group = group;
-		this.data = new WizardData();
+	public String getUsername() {
+		return username;
 	}
 
-	@Override
-	public void addPages() {
-		addPage(new ContactPage(data));
-		addPage(new NicknamePage(data));
-		setWindowTitle("Add Contact");
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
-	@Override
-	public boolean performFinish() {
-		ContactsEntry entry = new ContactsEntry(group, data.getUsername(),
-				data.getNickname(), data.getServer());
-		group.addEntry(entry);
-		return true;
+	public String getServer() {
+		return server;
+	}
+
+	public void setServer(String server) {
+		this.server = server;
+	}
+
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
 }
