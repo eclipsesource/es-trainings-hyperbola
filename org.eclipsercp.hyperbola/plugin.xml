@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
+   <extension-point id="protocols" name="Chat Protocols" schema="schema/protocols.exsd"/>
 
    <extension
          id="application"
@@ -60,10 +61,6 @@
          <property
                name="windowImages"
                value="branding/hyperbola16.gif,branding/hyperbola32.gif">
-         </property>
-         <property
-               name="preferenceCustomization"
-               value="preferences.ini">
          </property>
       </product>
    </extension>

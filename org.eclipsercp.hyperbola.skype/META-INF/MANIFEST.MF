@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Skype Protocol for Hyperbola
+Bundle-SymbolicName: org.eclipsercp.hyperbola.skype;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Require-Bundle: org.eclipsercp.hyperbola;bundle-version="1.0.0",
+ org.eclipsercp.hyperbola.core;bundle-version="1.0.0"

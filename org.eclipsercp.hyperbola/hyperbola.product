@@ -105,6 +105,7 @@ All rights reserved.
       <plugin id="org.eclipsercp.hyperbola"/>
       <plugin id="org.eclipsercp.hyperbola.core"/>
       <plugin id="org.eclipsercp.hyperbola.help"/>
+      <plugin id="org.eclipsercp.hyperbola.skype"/>
    </plugins>
 
 

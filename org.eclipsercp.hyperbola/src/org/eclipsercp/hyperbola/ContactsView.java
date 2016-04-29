@@ -15,6 +15,9 @@
  *******************************************************************************/
 package org.eclipsercp.hyperbola;
 
+import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.core.runtime.IExtensionRegistry;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.action.GroupMarker;
 import org.eclipse.jface.action.IStatusLineManager;
 import org.eclipse.jface.action.MenuManager;
@@ -31,6 +34,7 @@ import org.eclipse.ui.part.ViewPart;
 import org.eclipsercp.hyperbola.model.ContactsEntry;
 import org.eclipsercp.hyperbola.model.ContactsGroup;
 import org.eclipsercp.hyperbola.model.IContactsListener;
+import org.eclipsercp.hyperbola.model.ISession;
 import org.eclipsercp.hyperbola.model.Session;
 
 public class ContactsView extends ViewPart {
@@ -52,6 +56,26 @@ public class ContactsView extends ViewPart {
 		ContactsGroup group2 = new ContactsGroup(root, "Other");
 		group2.addEntry(new ContactsEntry(group2, "Nadine", "nad", "localhost"));
 		root.addEntry(group2);
+
+		addProtocols(root);
+	}
+
+	private void addProtocols(ContactsGroup root) {
+		IExtensionRegistry reg = Platform.getExtensionRegistry();
+		IConfigurationElement[] elements = reg
+				.getConfigurationElementsFor("org.eclipsercp.hyperbola.protocols");
+		for (IConfigurationElement element : elements) {
+			try {
+				Object obj = element.createExecutableExtension("class");
+				if (obj instanceof ISession) {
+					ContactsGroup group = ((ISession) obj).getRoot();
+					root.addEntry(group);
+					group.setParent(root);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 	@Override
