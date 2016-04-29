@@ -9,3 +9,4 @@ Require-Bundle: org.eclipse.ui,
  org.eclipsercp.hyperbola.core;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-ActivationPolicy: lazy
+Export-Package: org.eclipsercp.hyperbola;x-friends:="org.eclipsercp.hyperbola.tests"
