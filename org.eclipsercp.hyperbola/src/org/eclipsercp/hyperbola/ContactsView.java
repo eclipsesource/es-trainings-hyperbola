@@ -15,13 +15,17 @@
  *******************************************************************************/
 package org.eclipsercp.hyperbola;
 
+import org.eclipse.jface.action.GroupMarker;
 import org.eclipse.jface.action.IStatusLineManager;
+import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.TreeViewer;
+import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Menu;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
 import org.eclipsercp.hyperbola.model.ContactsEntry;
@@ -88,11 +92,21 @@ public class ContactsView extends ViewPart {
 				.getHelpSystem()
 				.setHelp(treeViewer.getControl(),
 						"org.eclipsercp.hyperbola.help.contactsView");
+
+		createContextMenu(treeViewer);
 	}
 
 	@Override
 	public void setFocus() {
 		treeViewer.getControl().setFocus();
+	}
+
+	private void createContextMenu(Viewer viewer) {
+		MenuManager menuMgr = new MenuManager();
+		menuMgr.add(new GroupMarker("additions"));
+		Menu menu = menuMgr.createContextMenu(viewer.getControl());
+		viewer.getControl().setMenu(menu);
+		getSite().registerContextMenu(menuMgr, viewer);
 	}
 
 }

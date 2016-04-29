@@ -37,6 +37,7 @@ public class ChatAction extends Action implements ISelectionListener,
 
 	public ChatAction(IWorkbenchWindow window) {
 		setId(ChatAction.class.getName());
+		setActionDefinitionId("org.eclipsercp.hyperbola.chat");
 		setText("&Chat...");
 		setToolTipText("Chat with a contact.");
 		setImageDescriptor(AbstractUIPlugin.imageDescriptorFromPlugin(

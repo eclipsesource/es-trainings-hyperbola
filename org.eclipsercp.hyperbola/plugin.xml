@@ -61,6 +61,10 @@
                name="windowImages"
                value="branding/hyperbola16.gif,branding/hyperbola32.gif">
          </property>
+         <property
+               name="preferenceCustomization"
+               value="preferences.ini">
+         </property>
       </product>
    </extension>
    <extension
@@ -78,6 +82,82 @@
                toolbarPath="additions">
          </action>
       </editorContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="org.eclipse.ui.file.exit"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+Q">
+      </key>
+      <key
+            commandId="org.eclipsercp.hyperbola.addcontact"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+1">
+      </key>
+      <key
+            commandId="org.eclipsercp.hyperbola.chat"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+2">
+      </key>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            id="org.eclipsercp.hyperbola.addcontact"
+            name="Add Contact...">
+      </command>
+      <command
+            id="org.eclipsercp.hyperbola.chat"
+            name="Chat">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commandImages">
+      <image
+            commandId="org.eclipsercp.hyperbola.addcontact"
+            icon="icons/add_contact.gif">
+      </image>
+      <image
+            commandId="org.eclipsercp.hyperbola.chat"
+            icon="icons/chat.gif">
+      </image>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipsercp.hyperbola.views.contacts">
+         <command
+               commandId="org.eclipsercp.hyperbola.addcontact"
+               style="push">
+            <visibleWhen
+                  checkEnabled="true">
+            </visibleWhen>
+         </command>
+         <command
+               commandId="org.eclipsercp.hyperbola.chat"
+               style="push">
+            <visibleWhen
+                  checkEnabled="true">
+            </visibleWhen>
+         </command>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="toolbar:org.eclipsercp.hyperbola.views.contacts">
+         <command
+               commandId="org.eclipsercp.hyperbola.addcontact"
+               style="push">
+         </command>
+         <command
+               commandId="org.eclipsercp.hyperbola.chat"
+               style="push">
+         </command>
+      </menuContribution>
    </extension>
 
 </plugin>

@@ -35,6 +35,7 @@ public class AddContactAction extends Action implements ISelectionListener,
 
 	public AddContactAction(IWorkbenchWindow window) {
 		setId(AddContactAction.class.getName());
+		setActionDefinitionId("org.eclipsercp.hyperbola.addcontact");
 		setText("&Add Contact...");
 		setToolTipText("Add a contact to your contacts list.");
 		setImageDescriptor(AbstractUIPlugin.imageDescriptorFromPlugin(
