@@ -133,4 +133,11 @@ public class ContactsView extends ViewPart {
 		getSite().registerContextMenu(menuMgr, viewer);
 	}
 
+	/**
+	 * Public for testing only.
+	 */
+	public TreeViewer getViewer() {
+		return treeViewer;
+	}
+
 }
