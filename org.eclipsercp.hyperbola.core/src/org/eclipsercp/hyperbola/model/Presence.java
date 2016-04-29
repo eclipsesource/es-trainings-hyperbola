@@ -15,11 +15,11 @@
 package org.eclipsercp.hyperbola.model;
 
 public class Presence {
-	public static final Presence ONLINE = new Presence("Online");
+	public static final Presence ONLINE = new Presence("Online"); //$NON-NLS-1$
 
-	public static final Presence OFFLINE = new Presence("Offline");
+	public static final Presence OFFLINE = new Presence("Offline"); //$NON-NLS-1$
 
-	public static final Presence DO_NOT_DISTURB = new Presence("Do Not Disturb");
+	public static final Presence DO_NOT_DISTURB = new Presence("Do Not Disturb"); //$NON-NLS-1$
 
 	private String value;
 

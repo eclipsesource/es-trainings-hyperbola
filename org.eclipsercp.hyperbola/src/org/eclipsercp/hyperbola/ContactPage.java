@@ -35,9 +35,9 @@ public class ContactPage extends WizardPage {
 	private Text txtServer;
 
 	public ContactPage(WizardData data) {
-		super(ContactPage.class.getName(), "Enter Contact information",
-				Activator.getImageDescriptor("icons/wizard_banner.png"));
-		setDescription("Enter the user's name and server information.");
+		super(ContactPage.class.getName(), Messages.ContactPage_pageTitle,
+				Activator.getImageDescriptor("icons/wizard_banner.png")); //$NON-NLS-1$
+		setDescription(Messages.ContactPage_pageDescription);
 		this.data = data;
 	}
 
@@ -45,11 +45,11 @@ public class ContactPage extends WizardPage {
 		Composite control = new Composite(parent, SWT.NONE);
 		control.setLayout(new GridLayout(2, false));
 
-		new Label(control, SWT.NONE).setText("User name:");
+		new Label(control, SWT.NONE).setText(Messages.ContactPage_labelUser);
 		txtUser = new Text(control, SWT.BORDER);
 		txtUser.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false));
 
-		new Label(control, SWT.NONE).setText("Server:");
+		new Label(control, SWT.NONE).setText(Messages.ContactPage_labelServer);
 		txtServer = new Text(control, SWT.BORDER);
 		txtServer.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false));
 
@@ -58,15 +58,15 @@ public class ContactPage extends WizardPage {
 
 		DataBindingContext dbc = new DataBindingContext();
 		dbc.bindValue(SWTObservables.observeText(txtUser, SWT.Modify),
-				PojoObservables.observeValue(data, "username"),
+				PojoObservables.observeValue(data, "username"), //$NON-NLS-1$
 				new UpdateValueStrategy()
 						.setBeforeSetValidator(new NotEmptyValidator(
-								"Enter a user name.")), null);
+								Messages.ContactPage_errorUsername)), null);
 		dbc.bindValue(SWTObservables.observeText(txtServer, SWT.Modify),
-				PojoObservables.observeValue(data, "server"),
+				PojoObservables.observeValue(data, "server"), //$NON-NLS-1$
 				new UpdateValueStrategy()
 						.setBeforeSetValidator(new NotEmptyValidator(
-								"Enter a server.")), null);
+								Messages.ContactPage_errorServer)), null);
 		WizardPageSupport.create(this, dbc);
 	}
 }

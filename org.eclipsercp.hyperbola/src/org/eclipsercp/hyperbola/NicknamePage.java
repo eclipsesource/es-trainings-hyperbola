@@ -34,9 +34,9 @@ public class NicknamePage extends WizardPage {
 	private Text txtNick;
 
 	public NicknamePage(WizardData data) {
-		super(NicknamePage.class.getName(), "Enter Contact information",
-				Activator.getImageDescriptor("icons/wizard_banner.png"));
-		setDescription("Enter the user's nickname.");
+		super(NicknamePage.class.getName(), Messages.NicknamePage_pageTitle,
+				Activator.getImageDescriptor("icons/wizard_banner.png")); //$NON-NLS-1$
+		setDescription(Messages.NicknamePage_pageDescription);
 		this.data = data;
 	}
 
@@ -44,7 +44,7 @@ public class NicknamePage extends WizardPage {
 		Composite control = new Composite(parent, SWT.NONE);
 		control.setLayout(new GridLayout(2, false));
 
-		new Label(control, SWT.NONE).setText("Nickname:");
+		new Label(control, SWT.NONE).setText(Messages.NicknamePage_label);
 		txtNick = new Text(control, SWT.BORDER);
 		txtNick.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false));
 
@@ -53,10 +53,10 @@ public class NicknamePage extends WizardPage {
 
 		DataBindingContext dbc = new DataBindingContext();
 		dbc.bindValue(SWTObservables.observeText(txtNick, SWT.Modify),
-				PojoObservables.observeValue(data, "nickname"),
+				PojoObservables.observeValue(data, "nickname"), //$NON-NLS-1$
 				new UpdateValueStrategy()
 						.setBeforeSetValidator(new NotEmptyValidator(
-								"Enter a nickname.")), null);
+								Messages.NicknamePage_errorMsg)), null);
 		WizardPageSupport.create(this, dbc);
 	}
 

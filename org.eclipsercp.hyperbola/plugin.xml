@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
-   <extension-point id="protocols" name="Chat Protocols" schema="schema/protocols.exsd"/>
+   <extension-point id="protocols" name="%extension-point.name" schema="schema/protocols.exsd"/>
 
    <extension
          id="application"
@@ -15,7 +15,7 @@
    <extension
          point="org.eclipse.ui.perspectives">
       <perspective
-            name="RCP Perspective"
+            name="%perspective.name"
             class="org.eclipsercp.hyperbola.Perspective"
             id="org.eclipsercp.hyperbola.perspective">
       </perspective>
@@ -26,7 +26,7 @@
             class="org.eclipsercp.hyperbola.ContactsView"
             icon="icons/groups.gif"
             id="org.eclipsercp.hyperbola.views.contacts"
-            name="Contacts"
+            name="%view.name"
             restorable="true">
       </view>
    </extension>
@@ -37,7 +37,7 @@
             default="false"
             icon="icons/chat.gif"
             id="org.eclipsercp.hyperbola.editors.chat"
-            name="Chat Editor">
+            name="%editor.name">
       </editor>
    </extension>
    <extension
@@ -73,7 +73,7 @@
                class="org.eclipsercp.hyperbola.BackgroundColorAction"
                icon="icons/color.png"
                id="org.eclipsercp.hyperbola.action"
-               label="Background Color"
+               label="%action.label"
                menubarPath="file/additions"
                style="push"
                toolbarPath="additions">
@@ -105,11 +105,11 @@
          point="org.eclipse.ui.commands">
       <command
             id="org.eclipsercp.hyperbola.addcontact"
-            name="Add Contact...">
+            name="%command.name">
       </command>
       <command
             id="org.eclipsercp.hyperbola.chat"
-            name="Chat">
+            name="%command.name.0">
       </command>
    </extension>
    <extension

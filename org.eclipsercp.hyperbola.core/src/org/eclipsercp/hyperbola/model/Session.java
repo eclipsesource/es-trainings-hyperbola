@@ -31,7 +31,7 @@ public class Session implements ISession {
 
 	public ContactsGroup getRoot() {
 		if (rootGroup == null) {
-			rootGroup = new ContactsGroup(null, "RootGroup");
+			rootGroup = new ContactsGroup(null, "RootGroup"); //$NON-NLS-1$
 		}
 		return rootGroup;
 	}

@@ -34,7 +34,7 @@ public class AddContactWizard extends Wizard implements IWizard {
 	public void addPages() {
 		addPage(new ContactPage(data));
 		addPage(new NicknamePage(data));
-		setWindowTitle("Add Contact");
+		setWindowTitle(Messages.AddContactWizard_windowTitle);
 	}
 
 	@Override

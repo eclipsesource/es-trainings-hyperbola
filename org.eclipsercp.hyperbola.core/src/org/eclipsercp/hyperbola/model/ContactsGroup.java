@@ -44,7 +44,7 @@ public class ContactsGroup extends Contact {
 
 	public void setParent(ContactsGroup parent) {
 		if (this.parent != null) {
-			throw new IllegalStateException("cannot change parent, once set");
+			throw new IllegalStateException("cannot change parent, once set"); //$NON-NLS-1$
 		}
 		this.parent = parent;
 	}

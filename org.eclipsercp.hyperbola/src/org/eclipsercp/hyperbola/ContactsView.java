@@ -39,7 +39,7 @@ import org.eclipsercp.hyperbola.model.Session;
 
 public class ContactsView extends ViewPart {
 
-	public static final String ID = "org.eclipsercp.hyperbola.views.contacts";
+	public static final String ID = "org.eclipsercp.hyperbola.views.contacts"; //$NON-NLS-1$
 
 	private Session session;
 	private TreeViewer treeViewer;
@@ -48,13 +48,13 @@ public class ContactsView extends ViewPart {
 		session = new Session();
 		ContactsGroup root = session.getRoot();
 
-		ContactsGroup group1 = new ContactsGroup(root, "Friends");
-		group1.addEntry(new ContactsEntry(group1, "Alize", "aliz", "localhost"));
-		group1.addEntry(new ContactsEntry(group1, "Sydney", "syd", "localhost"));
+		ContactsGroup group1 = new ContactsGroup(root, Messages.ContactsView_groupFriends);
+		group1.addEntry(new ContactsEntry(group1, "Alize", "aliz", "localhost")); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		group1.addEntry(new ContactsEntry(group1, "Sydney", "syd", "localhost")); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 		root.addEntry(group1);
 
-		ContactsGroup group2 = new ContactsGroup(root, "Other");
-		group2.addEntry(new ContactsEntry(group2, "Nadine", "nad", "localhost"));
+		ContactsGroup group2 = new ContactsGroup(root, Messages.ContactsView_groupOther);
+		group2.addEntry(new ContactsEntry(group2, "Nadine", "nad", "localhost")); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 		root.addEntry(group2);
 
 		addProtocols(root);
@@ -63,10 +63,10 @@ public class ContactsView extends ViewPart {
 	private void addProtocols(ContactsGroup root) {
 		IExtensionRegistry reg = Platform.getExtensionRegistry();
 		IConfigurationElement[] elements = reg
-				.getConfigurationElementsFor("org.eclipsercp.hyperbola.protocols");
+				.getConfigurationElementsFor("org.eclipsercp.hyperbola.protocols"); //$NON-NLS-1$
 		for (IConfigurationElement element : elements) {
 			try {
-				Object obj = element.createExecutableExtension("class");
+				Object obj = element.createExecutableExtension("class"); //$NON-NLS-1$
 				if (obj instanceof ISession) {
 					ContactsGroup group = ((ISession) obj).getRoot();
 					root.addEntry(group);
@@ -103,10 +103,10 @@ public class ContactsView extends ViewPart {
 				IStructuredSelection sSelection = (IStructuredSelection) event
 						.getSelection();
 				if (sSelection.isEmpty()) {
-					statusLine.setMessage("");
+					statusLine.setMessage(""); //$NON-NLS-1$
 				} else {
 					statusLine.setMessage(sSelection.size()
-							+ " item(s) selected");
+							+ Messages.ContactsView_itemsSelected);
 				}
 			}
 		});
@@ -115,7 +115,7 @@ public class ContactsView extends ViewPart {
 				.getWorkbench()
 				.getHelpSystem()
 				.setHelp(treeViewer.getControl(),
-						"org.eclipsercp.hyperbola.help.contactsView");
+						"org.eclipsercp.hyperbola.help.contactsView"); //$NON-NLS-1$
 
 		createContextMenu(treeViewer);
 	}
@@ -127,7 +127,7 @@ public class ContactsView extends ViewPart {
 
 	private void createContextMenu(Viewer viewer) {
 		MenuManager menuMgr = new MenuManager();
-		menuMgr.add(new GroupMarker("additions"));
+		menuMgr.add(new GroupMarker("additions")); //$NON-NLS-1$
 		Menu menu = menuMgr.createContextMenu(viewer.getControl());
 		viewer.getControl().setMenu(menu);
 		getSite().registerContextMenu(menuMgr, viewer);

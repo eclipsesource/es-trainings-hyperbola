@@ -35,11 +35,11 @@ public class AddContactAction extends Action implements ISelectionListener,
 
 	public AddContactAction(IWorkbenchWindow window) {
 		setId(AddContactAction.class.getName());
-		setActionDefinitionId("org.eclipsercp.hyperbola.addcontact");
-		setText("&Add Contact...");
-		setToolTipText("Add a contact to your contacts list.");
+		setActionDefinitionId("org.eclipsercp.hyperbola.addcontact"); //$NON-NLS-1$
+		setText(Messages.AddContactAction_text);
+		setToolTipText(Messages.AddContactAction_tooltip);
 		setImageDescriptor(AbstractUIPlugin.imageDescriptorFromPlugin(
-				"org.eclipsercp.hyperbola", "icons/add_contact.gif"));
+				"org.eclipsercp.hyperbola", "icons/add_contact.gif")); //$NON-NLS-1$ //$NON-NLS-2$
 		this.window = window;
 		window.getSelectionService().addSelectionListener(this);
 	}

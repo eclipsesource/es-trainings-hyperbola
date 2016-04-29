@@ -37,11 +37,11 @@ public class ChatAction extends Action implements ISelectionListener,
 
 	public ChatAction(IWorkbenchWindow window) {
 		setId(ChatAction.class.getName());
-		setActionDefinitionId("org.eclipsercp.hyperbola.chat");
-		setText("&Chat...");
-		setToolTipText("Chat with a contact.");
+		setActionDefinitionId("org.eclipsercp.hyperbola.chat"); //$NON-NLS-1$
+		setText(Messages.ChatAction_text);
+		setToolTipText(Messages.ChatAction_tooltip);
 		setImageDescriptor(AbstractUIPlugin.imageDescriptorFromPlugin(
-				"org.eclipsercp.hyperbola", "icons/chat.gif"));
+				"org.eclipsercp.hyperbola", "icons/chat.gif")); //$NON-NLS-1$ //$NON-NLS-2$
 		this.window = window;
 		window.getSelectionService().addSelectionListener(this);
 	}
@@ -68,7 +68,7 @@ public class ChatAction extends Action implements ISelectionListener,
 		try {
 			page.openEditor(input, ChatEditor.ID);
 		} catch (PartInitException exc) {
-			Bundle bundle = Platform.getBundle("org.eclipsercp.hyperbola");
+			Bundle bundle = Platform.getBundle("org.eclipsercp.hyperbola"); //$NON-NLS-1$
 			Platform.getLog(bundle).log(exc.getStatus());
 		}
 	}

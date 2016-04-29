@@ -36,7 +36,7 @@ import org.eclipse.ui.part.EditorPart;
 
 public class ChatEditor extends EditorPart {
 
-	public static final String ID = "org.eclipsercp.hyperbola.editors.chat";
+	public static final String ID = "org.eclipsercp.hyperbola.editors.chat"; //$NON-NLS-1$
 
 	private Text transcript;
 	private Text entry;
@@ -105,7 +105,7 @@ public class ChatEditor extends EditorPart {
 		});
 
 		Button btnSend = new Button(top, SWT.PUSH);
-		btnSend.setText("&Send");
+		btnSend.setText(Messages.ChatEditor_btnSend);
 		btnSend.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -115,7 +115,7 @@ public class ChatEditor extends EditorPart {
 		});
 
 		PlatformUI.getWorkbench().getHelpSystem()
-				.setHelp(top, "org.eclipsercp.hyperbola.help.chatEditor");
+				.setHelp(top, "org.eclipsercp.hyperbola.help.chatEditor"); //$NON-NLS-1$
 	}
 
 	private String getUser() {
@@ -128,7 +128,7 @@ public class ChatEditor extends EditorPart {
 		int j = from.indexOf('@');
 		if (j > 0)
 			from = from.substring(0, j);
-		return "<" + from + ">  " + body;
+		return "<" + from + ">  " + body; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	private void scrollToEnd() {
@@ -147,9 +147,9 @@ public class ChatEditor extends EditorPart {
 			return;
 		}
 		transcript.append(renderMessage(getUser(), body));
-		transcript.append("\n");
+		transcript.append("\n"); //$NON-NLS-1$
 		scrollToEnd();
-		entry.setText("");
+		entry.setText(""); //$NON-NLS-1$
 		isDirty = true;
 		firePropertyChange(PROP_DIRTY);
 	}

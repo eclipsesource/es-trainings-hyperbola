@@ -40,7 +40,7 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 		configurer.setShowCoolBar(true);
 		configurer.setShowStatusLine(true);
 		if (configurer.getTitle().length() == 0) {
-			configurer.setTitle("Hyperbola");
+			configurer.setTitle(Messages.ApplicationWorkbenchWindowAdvisor_appTitle);
 		}
 	}
 }

@@ -60,19 +60,21 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 	}
 
 	protected void fillMenuBar(IMenuManager menuBar) {
-		MenuManager fileMenu = new MenuManager("&File", "file");
+		MenuManager fileMenu = new MenuManager(
+				Messages.ApplicationActionBarAdvisor_fileMenu, "file"); //$NON-NLS-1$
 		fileMenu.add(addContactAction);
 		fileMenu.add(chatAction);
 		fileMenu.add(saveAction);
-		fileMenu.add(new GroupMarker("additions"));
+		fileMenu.add(new GroupMarker("additions")); //$NON-NLS-1$
 		fileMenu.add(new Separator());
 		fileMenu.add(exitAction);
 		menuBar.add(fileMenu);
 
-		MenuManager helpMenu = new MenuManager("&Help", "help");
+		MenuManager helpMenu = new MenuManager(
+				Messages.ApplicationActionBarAdvisor_helpMenu, "help"); //$NON-NLS-1$
 		helpMenu.add(helpAction);
 		helpMenu.add(dynamicHelpAction);
-		helpMenu.add(new GroupMarker("additions"));
+		helpMenu.add(new GroupMarker("additions")); //$NON-NLS-1$
 		helpMenu.add(new Separator());
 		helpMenu.add(aboutAction);
 		menuBar.add(helpMenu);
@@ -84,7 +86,7 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 		toolbar.add(addContactAction);
 		toolbar.add(chatAction);
 		toolbar.add(saveAction);
-		coolBar.add(new ToolBarContributionItem(toolbar, "hyperbola"));
+		coolBar.add(new ToolBarContributionItem(toolbar, "hyperbola")); //$NON-NLS-1$
 	}
 
 }

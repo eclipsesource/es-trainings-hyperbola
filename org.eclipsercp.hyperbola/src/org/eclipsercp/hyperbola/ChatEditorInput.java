@@ -26,7 +26,7 @@ public class ChatEditorInput implements IEditorInput {
 
 	public ChatEditorInput(ContactsEntry entry) {
 		if (entry == null) {
-			throw new NullPointerException("entry is null");
+			throw new NullPointerException("entry is null"); //$NON-NLS-1$
 		}
 		this.entry = entry;
 	}
@@ -57,7 +57,7 @@ public class ChatEditorInput implements IEditorInput {
 	}
 
 	public String getToolTipText() {
-		return "Chat with: " + entry.getName();
+		return Messages.ChatEditorInput_tooltip + entry.getName();
 	}
 
 	@Override

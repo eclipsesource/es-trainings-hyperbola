@@ -16,7 +16,7 @@
 package org.eclipsercp.hyperbola;
 
 public interface IImageKeys {
-	String GROUP = "icons/groups.gif";
-	String ONLINE = "icons/online.gif";
-	String OFFLINE = "icons/offline.gif";
+	String GROUP = "icons/groups.gif"; //$NON-NLS-1$
+	String ONLINE = "icons/online.gif"; //$NON-NLS-1$
+	String OFFLINE = "icons/offline.gif"; //$NON-NLS-1$
 }
