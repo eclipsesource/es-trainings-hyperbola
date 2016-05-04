@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Hyperbola is an RCP application developed for the book
- *     Eclipse Rich Client Platform - 
+ *     Eclipse Rich Client Platform -
  *         Designing, Coding, and Packaging Java Applications
  * See http://eclipsercp.org
  *
@@ -35,25 +35,29 @@ public class HyperbolaContentProvider implements ITreeContentProvider {
 		return root.getEntries();
 	}
 
-	public Object[] getChildren(Object parentElement) {
-		if (parentElement instanceof ContactsGroup) {
-			ContactsGroup group = (ContactsGroup) parentElement;
-			return group.getEntries();
-		}
-		return new Object[0];
-	}
+// tag::get_children[]
+  public Object[] getChildren(Object parentElement) {
+    if (parentElement instanceof ContactsGroup) {
+      ContactsGroup group = (ContactsGroup) parentElement;
+      return group.getEntries();
+    }
+    return new Object[0];
+  }
+// end::get_children[]
 
 	public Object getParent(Object element) {
 		Contact contact = (Contact) element;
 		return contact.getParent();
 	}
 
-	public boolean hasChildren(Object element) {
-		if (element instanceof ContactsGroup) {
-			ContactsGroup group = (ContactsGroup) element;
-			return group.getEntries().length > 0;
-		}
-		return false;
-	}
+// tag::has_children[]
+  public boolean hasChildren(Object element) {
+    if (element instanceof ContactsGroup) {
+      ContactsGroup group = (ContactsGroup) element;
+      return group.getEntries().length > 0;
+    }
+    return false;
+  }
+// end::has_children[]
 
 }

@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Hyperbola is an RCP application developed for the book
- *     Eclipse Rich Client Platform - 
+ *     Eclipse Rich Client Platform -
  *         Designing, Coding, and Packaging Java Applications
  * See http://eclipsercp.org
  *
@@ -23,15 +23,19 @@ import org.eclipsercp.hyperbola.model.ContactsGroup;
 public class HyperbolaLabelProvider extends LabelProvider {
 
 	@Override
-	public String getText(Object element) {
-		Contact contact = (Contact) element;
-		return contact.getName();
-	}
+// tag::get_text[]
+  public String getText(Object element) {
+    Contact contact = (Contact) element;
+    return contact.getName();
+  }
+// end::get_text[]
 
 	@Override
-	public Image getImage(Object element) {
-		boolean isGroup = element instanceof ContactsGroup;
-		String key = isGroup ? IImageKeys.GROUP : IImageKeys.ONLINE;
-		return Activator.getDefault().getImageRegistry().get(key);
-	}
+// tag::get_image[]
+  public Image getImage(Object element) {
+    boolean isGroup = element instanceof ContactsGroup;
+    String key = isGroup ? IImageKeys.GROUP : IImageKeys.ONLINE;
+    return Activator.getDefault().getImageRegistry().get(key); // <1>
+  }
+// end::get_image[]
 }
