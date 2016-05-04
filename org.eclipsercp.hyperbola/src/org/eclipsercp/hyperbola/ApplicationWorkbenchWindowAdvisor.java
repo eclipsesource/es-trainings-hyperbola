@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Hyperbola is an RCP application developed for the book
- *     Eclipse Rich Client Platform - 
+ *     Eclipse Rich Client Platform -
  *         Designing, Coding, and Packaging Java Applications
  * See http://eclipsercp.org
  *
@@ -23,24 +23,26 @@ import org.eclipse.ui.application.WorkbenchWindowAdvisor;
 
 public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 
-	public ApplicationWorkbenchWindowAdvisor(
-			IWorkbenchWindowConfigurer configurer) {
+	public ApplicationWorkbenchWindowAdvisor(IWorkbenchWindowConfigurer configurer) {
 		super(configurer);
 	}
 
-	public ActionBarAdvisor createActionBarAdvisor(
-			IActionBarConfigurer configurer) {
-		return new ApplicationActionBarAdvisor(configurer);
-	}
+// tag::create_action_bar_advisor[]
+  public ActionBarAdvisor createActionBarAdvisor(IActionBarConfigurer configurer) {
+    return new ApplicationActionBarAdvisor(configurer); // <1>
+  }
+// end::create_action_bar_advisor[]
 
-	public void preWindowOpen() {
-		IWorkbenchWindowConfigurer configurer = getWindowConfigurer();
-		configurer.setInitialSize(new Point(600, 400));
-		configurer.setShowMenuBar(true);
-		configurer.setShowCoolBar(true);
-		configurer.setShowStatusLine(true);
-		if (configurer.getTitle().length() == 0) {
-			configurer.setTitle(Messages.ApplicationWorkbenchWindowAdvisor_appTitle);
-		}
-	}
+// tag::pre_window_open[]
+  public void preWindowOpen() {
+    IWorkbenchWindowConfigurer configurer = getWindowConfigurer();
+    configurer.setInitialSize(new Point(600, 400)); // <1>
+    configurer.setShowMenuBar(true);
+    configurer.setShowCoolBar(true);
+    configurer.setShowStatusLine(true); // <2>
+    if (configurer.getTitle().length() == 0) {
+      configurer.setTitle(Messages.ApplicationWorkbenchWindowAdvisor_appTitle);
+    }
+  }
+// end::pre_window_open[]
 }

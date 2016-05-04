@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Hyperbola is an RCP application developed for the book
- *     Eclipse Rich Client Platform - 
+ *     Eclipse Rich Client Platform -
  *         Designing, Coding, and Packaging Java Applications
  * See http://eclipsercp.org
  *
@@ -19,16 +19,17 @@ import org.eclipse.ui.application.IWorkbenchWindowConfigurer;
 import org.eclipse.ui.application.WorkbenchAdvisor;
 import org.eclipse.ui.application.WorkbenchWindowAdvisor;
 
+// tag::type[]
 public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 
-	private static final String PERSPECTIVE_ID = "org.eclipsercp.hyperbola.perspective"; //$NON-NLS-1$
+  private static final String PERSPECTIVE_ID = "org.eclipsercp.hyperbola.perspective"; //$NON-NLS-1$
 
-	public WorkbenchWindowAdvisor createWorkbenchWindowAdvisor(
-			IWorkbenchWindowConfigurer configurer) {
-		return new ApplicationWorkbenchWindowAdvisor(configurer);
-	}
+  public WorkbenchWindowAdvisor createWorkbenchWindowAdvisor(IWorkbenchWindowConfigurer configurer) {
+    return new ApplicationWorkbenchWindowAdvisor(configurer); // <1>
+  }
 
-	public String getInitialWindowPerspectiveId() {
-		return PERSPECTIVE_ID;
-	}
+  public String getInitialWindowPerspectiveId() {
+    return PERSPECTIVE_ID; // <2>
+  }
 }
+// end::type[]
