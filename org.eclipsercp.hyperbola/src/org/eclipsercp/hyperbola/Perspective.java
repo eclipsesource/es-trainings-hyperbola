@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Hyperbola is an RCP application developed for the book
- *     Eclipse Rich Client Platform - 
+ *     Eclipse Rich Client Platform -
  *         Designing, Coding, and Packaging Java Applications
  * See http://eclipsercp.org
  *
@@ -19,12 +19,14 @@ import org.eclipse.ui.IPageLayout;
 import org.eclipse.ui.IPerspectiveFactory;
 import org.eclipse.ui.IViewLayout;
 
+// tag::type[]
 public class Perspective implements IPerspectiveFactory {
 
-	public void createInitialLayout(IPageLayout layout) {
-		layout.addView(ContactsView.ID, IPageLayout.LEFT, 0.33f,
-				layout.getEditorArea());
-		IViewLayout contactsView = layout.getViewLayout(ContactsView.ID);
-		contactsView.setCloseable(false);
-	}
+  public void createInitialLayout(IPageLayout layout) {
+    layout.addView(ContactsView.ID, IPageLayout.LEFT, 0.33f,
+        layout.getEditorArea());
+    IViewLayout contactsView = layout.getViewLayout(ContactsView.ID);
+    contactsView.setCloseable(false); // <1>
+  }
 }
+// end::type[]
