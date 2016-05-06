@@ -1,16 +1,16 @@
 <contexts>
- <context id="contactsView">
-   <description>This is the Contacts View</description>
-   <topic
-     label="Managing Contacts"
-     href="html/tasks/managingContacts.html" />
-   <topic
-     label="Grouping Contacts"
-     href="html/tasks/groupingContacts.html" />
- </context>
+<!-- tag::contacts[] -->
+  <context id="contactsView"> <!--1-->
+    <description>This is the Contacts View</description>
+    <topic label="Managing Contacts"
+      href="html/tasks/managingContacts.html" />
+    <topic label="Grouping Contacts"
+      href="html/tasks/groupingContacts.html" />
+  </context>
+<!-- end::contacts[] -->
  <context id="chatEditor">
     <description>This is the Chat Editor</description>
-    <topic 
+    <topic
       label="Getting started"
       href="html/gettingstarted/maintopic.html" />
  </context>

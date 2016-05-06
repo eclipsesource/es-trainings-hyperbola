@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Hyperbola is an RCP application developed for the book
- *     Eclipse Rich Client Platform - 
+ *     Eclipse Rich Client Platform -
  *         Designing, Coding, and Packaging Java Applications
  * See http://eclipsercp.org
  *
@@ -111,11 +111,11 @@ public class ContactsView extends ViewPart {
 			}
 		});
 
-		PlatformUI
-				.getWorkbench()
-				.getHelpSystem()
-				.setHelp(treeViewer.getControl(),
-						"org.eclipsercp.hyperbola.help.contactsView"); //$NON-NLS-1$
+    PlatformUI
+        .getWorkbench()
+        .getHelpSystem()
+        .setHelp(treeViewer.getControl(),
+          "org.eclipsercp.hyperbola.help.contactsView"); //$NON-NLS-1$
 
 		createContextMenu(treeViewer);
 	}
@@ -125,13 +125,15 @@ public class ContactsView extends ViewPart {
 		treeViewer.getControl().setFocus();
 	}
 
+// tag::create_context_menu[]
 	private void createContextMenu(Viewer viewer) {
-		MenuManager menuMgr = new MenuManager();
-		menuMgr.add(new GroupMarker("additions")); //$NON-NLS-1$
-		Menu menu = menuMgr.createContextMenu(viewer.getControl());
-		viewer.getControl().setMenu(menu);
-		getSite().registerContextMenu(menuMgr, viewer);
+    MenuManager menuMgr = new MenuManager();
+    menuMgr.add(new GroupMarker("additions")); //$NON-NLS-1$
+    Menu menu = menuMgr.createContextMenu(viewer.getControl());
+    viewer.getControl().setMenu(menu);
+    getSite().registerContextMenu(menuMgr, viewer);
 	}
+// end::create_context_menu[]
 
 	/**
 	 * Public for testing only.
