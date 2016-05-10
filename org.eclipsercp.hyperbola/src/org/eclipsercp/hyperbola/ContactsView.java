@@ -37,6 +37,8 @@ public class ContactsView extends ViewPart {
 
 	private Session session;
 
+	private IAdapterFactory adapterFactory = new HyperbolaAdapterFactory();
+
 	public ContactsView() {
 		super();
 	}
@@ -46,6 +48,7 @@ public class ContactsView extends ViewPart {
 		treeViewer = new TreeViewer(parent, SWT.BORDER | SWT.MULTI
 				| SWT.V_SCROLL);
 		getSite().setSelectionProvider(treeViewer);
+		Platform.getAdapterManager().registerAdapters(adapterFactory, Contact.class);
 		treeViewer.setLabelProvider(new WorkbenchLabelProvider());
 		treeViewer.setContentProvider(new BaseWorkbenchContentProvider());
 		treeViewer.setInput(session.getRoot());
@@ -58,6 +61,7 @@ public class ContactsView extends ViewPart {
 	}
 	
 	public void dispose() {
+		Platform.getAdapterManager().unregisterAdapters(adapterFactory);
 		super.dispose();
 	}
 

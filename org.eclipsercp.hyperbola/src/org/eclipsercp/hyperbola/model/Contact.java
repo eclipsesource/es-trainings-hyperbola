@@ -15,7 +15,9 @@
  *******************************************************************************/
 package org.eclipsercp.hyperbola.model;
 
-public abstract class Contact {
+import org.eclipse.core.runtime.PlatformObject;
+
+public abstract class Contact extends PlatformObject {
 	public abstract String getName();
 
 	public abstract ContactsGroup getParent();
