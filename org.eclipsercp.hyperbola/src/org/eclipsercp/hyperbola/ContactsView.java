@@ -15,15 +15,12 @@
  *******************************************************************************/
 package org.eclipsercp.hyperbola;
 
-import org.eclipse.core.runtime.IAdapterFactory;
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.model.BaseWorkbenchContentProvider;
 import org.eclipse.ui.model.WorkbenchLabelProvider;
 import org.eclipse.ui.part.ViewPart;
-import org.eclipsercp.hyperbola.model.Contact;
 import org.eclipsercp.hyperbola.model.ContactsEntry;
 import org.eclipsercp.hyperbola.model.ContactsGroup;
 import org.eclipsercp.hyperbola.model.IContactsListener;
@@ -37,7 +34,7 @@ public class ContactsView extends ViewPart {
 
 	private Session session;
 
-	private IAdapterFactory adapterFactory = new HyperbolaAdapterFactory();
+//	private IAdapterFactory adapterFactory = new HyperbolaAdapterFactory();
 
 	public ContactsView() {
 		super();
@@ -48,7 +45,7 @@ public class ContactsView extends ViewPart {
 		treeViewer = new TreeViewer(parent, SWT.BORDER | SWT.MULTI
 				| SWT.V_SCROLL);
 		getSite().setSelectionProvider(treeViewer);
-		Platform.getAdapterManager().registerAdapters(adapterFactory, Contact.class);
+//		Platform.getAdapterManager().registerAdapters(adapterFactory, Contact.class);
 		treeViewer.setLabelProvider(new WorkbenchLabelProvider());
 		treeViewer.setContentProvider(new BaseWorkbenchContentProvider());
 		treeViewer.setInput(session.getRoot());
@@ -61,7 +58,7 @@ public class ContactsView extends ViewPart {
 	}
 	
 	public void dispose() {
-		Platform.getAdapterManager().unregisterAdapters(adapterFactory);
+//		Platform.getAdapterManager().unregisterAdapters(adapterFactory);
 		super.dispose();
 	}
 

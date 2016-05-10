@@ -57,5 +57,15 @@
          </property>
       </product>
    </extension>
+   <extension
+         point="org.eclipse.core.runtime.adapters">
+      <factory
+            adaptableType="org.eclipsercp.hyperbola.model.Contact"
+            class="org.eclipsercp.hyperbola.HyperbolaAdapterFactory">
+         <adapter
+               type="org.eclipse.ui.model.IWorkbenchAdapter">
+         </adapter>
+      </factory>
+   </extension>
 
 </plugin>
