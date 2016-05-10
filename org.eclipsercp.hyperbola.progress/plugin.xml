@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            id="org.eclipsercp.hyperbola.progress.actionSet"
+            visible="true"
+            label="Progress">
+         <menu
+               id="tools"
+               label="Tools"
+               path="additions">
+            <separator
+                  name="progress">
+            </separator>
+         </menu>
+         <action
+               class="org.eclipsercp.hyperbola.actions.BusyIndicatorAction"
+               id="org.eclipsercp.hyperbola.progress.action1"
+               label="Busy Indicator"
+               menubarPath="tools/progress"
+               style="push">
+         </action>
+         <action
+               class="org.eclipsercp.hyperbola.actions.ProgressMonitorDialogAction"
+               id="org.eclipsercp.hyperbola.progress.action2"
+               label="Progress Monitor Dialog"
+               menubarPath="tools/progress"
+               style="push">
+         </action>
+         <action
+               class="org.eclipsercp.hyperbola.actions.ProgressServiceAction"
+               id="org.eclipsercp.hyperbola.progress.action3"
+               label="Progress Service"
+               menubarPath="tools/progress"
+               style="push">
+         </action>
+         <action
+               class="org.eclipsercp.hyperbola.actions.JobAction"
+               id="org.eclipsercp.hyperbola.progress.action4"
+               label="Job"
+               menubarPath="tools/progress"
+               style="push">
+         </action>
+      </actionSet>
+   </extension>
+	<extension point="org.eclipse.ui.views"> 
+		<view class="org.eclipse.ui.ExtensionFactory:progressView" 
+			icon="icons/pview.gif"
+			id="org.eclipsercp.hyperbola.views.progress" 
+			name="Progress"/> 
+	</extension> 
+	<extension
+	      point="org.eclipse.ui.perspectiveExtensions">
+	    <perspectiveExtension
+	          targetID="org.eclipsercp.hyperbola.perspective">
+	          <view
+	                id="org.eclipsercp.hyperbola.views.progress"
+	                minimized="false" 
+	                relationship="bottom"
+	                relative="org.eclipse.ui.editorss" 
+	                
+	                visible="true">
+	          </view>
+	    </perspectiveExtension>
+	</extension>
+</plugin>
