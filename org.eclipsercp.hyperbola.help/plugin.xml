@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.help.toc">
+      <toc
+            file="toc.xml"
+            primary="true">
+      </toc>
+      <toc
+            file="tocgettingstarted.xml">
+      </toc>
+      <toc
+            file="toctasks.xml">
+      </toc>
+   </extension>
+   <extension
+         point="org.eclipse.help.contexts">
+      <contexts
+            file="contexts.xml">
+      </contexts>
+   </extension>
+   <extension
+         point="org.eclipse.ui.cheatsheets.cheatSheetContent">
+      <category
+            id="org.eclipsercp.hyperbola.help.category"
+            name="Hyperbola">
+      </category>
+      <cheatsheet
+            category="org.eclipsercp.hyperbola.help.category"
+            composite="false"
+            contentFile="$nl$/cheatsheet.xml"
+            id="org.eclipsercp.hyperbola.help.cheatsheet"
+            name="Cheat with Hyperbola">
+         <description>
+            This section describes how to do more complex interactions in Hyperbola.
+         </description>
+      </cheatsheet>
+   </extension>
+
+   
+</plugin>

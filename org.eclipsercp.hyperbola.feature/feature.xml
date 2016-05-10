@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipsercp.hyperbola.feature"
+      label="Hyperbola Feature"
+      version="1.0.0"
+      provider-name="EclipseSource"
+      plugin="org.eclipsercp.hyperbola">
+
+   <description url="http://www.example.com/description">
+      Hyperbola Chat Client
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      [Enter Copyright Description here.]
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+
+   <requires>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.ui"/>
+   </requires>
+
+   <plugin
+         id="org.eclipsercp.hyperbola"
+         download-size="200"
+         install-size="200"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipsercp.hyperbola.help"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.ui.cheatsheets"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.ui.forms"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

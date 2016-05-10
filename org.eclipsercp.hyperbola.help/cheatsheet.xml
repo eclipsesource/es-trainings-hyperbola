@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet
+      title="Help in Hyperbola">
+   <intro>
+      <description>
+         <b>Introduction to this Cheat Sheet. This usually exlains a bit about the context of this set of actions and possibly why you want to use it.</b>
+      </description>
+   </intro>
+   <item
+         title="Sample Action: Open a view">
+      <description>
+         Describe here where the &quot;Open a view&quot; command can be found in the menu (In Hyperbola it can&apos;t). The following short cut offers to do this step from the cheat sheet.
+      </description>
+      <command
+            required="false"
+            serialization="org.eclipse.ui.views.showView"/>
+   </item>
+   <item
+         title="Interactions with the Help System">
+      <description>
+         There are a number of things you can do with help in Hyperbola.
+      </description>
+      <subitem
+            label="Open the about dialog">
+         <command
+               required="false"
+               serialization="org.eclipse.ui.help.aboutAction"/>
+      </subitem>
+      <subitem
+            label="Open the help system">
+         <command
+               required="false"
+               serialization="org.eclipse.ui.help.helpContents"/>
+      </subitem>
+   </item>
+</cheatsheet>

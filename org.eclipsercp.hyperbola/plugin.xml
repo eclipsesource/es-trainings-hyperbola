@@ -44,7 +44,7 @@
             name="Hyperbola Chat Client">
          <property
                name="windowImages"
-               value="icons/alt16.gif,icons/alt32.gif"/>
+               value="icons/online.gif"/>
          <property
                name="aboutImage"
                value="icons/about.gif"/>
@@ -54,6 +54,10 @@
          <property
                name="appName"
                value="Hyperbola Chat Client">
+         </property>
+         <property
+               name="preferenceCustomization"
+               value="preferences.ini">
          </property>
       </product>
    </extension>

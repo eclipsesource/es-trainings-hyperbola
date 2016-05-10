@@ -20,6 +20,7 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.model.BaseWorkbenchContentProvider;
 import org.eclipse.ui.model.WorkbenchLabelProvider;
 import org.eclipse.ui.part.ViewPart;
@@ -58,6 +59,8 @@ public class ContactsView extends ViewPart {
 				treeViewer.refresh();
 			}
 		});
+		PlatformUI.getWorkbench().getHelpSystem().setHelp(treeViewer.getTree(), 
+		                                                  "org.eclipsercp.hyperbola.help.contactsView");
 	}
 	
 	public void dispose() {

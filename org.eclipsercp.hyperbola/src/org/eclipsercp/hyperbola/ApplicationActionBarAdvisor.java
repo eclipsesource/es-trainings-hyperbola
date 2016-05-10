@@ -1,17 +1,12 @@
 /*******************************************************************************
- * Copyright (c) 2005 Jean-Michel Lemieux, Jeff McAffer and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Hyperbola is an RCP application developed for the book
- *     Eclipse Rich Client Platform - 
- *         Designing, Coding, and Packaging Java Applications
- * See http://eclipsercp.org
- *
- * Contributors:
- *     Jean-Michel Lemieux and Jeff McAffer - initial API and implementation
+ * Copyright (c) 2005 Jean-Michel Lemieux, Jeff McAffer and others. All rights
+ * reserved. This program and the accompanying materials are made available
+ * under the terms of the Eclipse Public License v1.0 which accompanies this
+ * distribution, and is available at http://www.eclipse.org/legal/epl-v10.html
+ * Hyperbola is an RCP application developed for the book Eclipse Rich Client
+ * Platform - Designing, Coding, and Packaging Java Applications See
+ * http://eclipsercp.org Contributors: Jean-Michel Lemieux and Jeff McAffer -
+ * initial API and implementation
  *******************************************************************************/
 package org.eclipsercp.hyperbola;
 
@@ -26,53 +21,60 @@ import org.eclipse.ui.actions.ActionFactory;
 import org.eclipse.ui.actions.ActionFactory.IWorkbenchAction;
 import org.eclipse.ui.application.ActionBarAdvisor;
 import org.eclipse.ui.application.IActionBarConfigurer;
+import org.eclipse.ui.cheatsheets.OpenCheatSheetAction;
 
 public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 
-	public ApplicationActionBarAdvisor(IActionBarConfigurer configurer) {
-		super(configurer);
-	}
+  public ApplicationActionBarAdvisor( IActionBarConfigurer configurer ) {
+    super( configurer );
+  }
+  private IWorkbenchAction exitAction;
+  private IWorkbenchAction aboutAction;
+  private AddContactAction addContactAction;
+  private ChatAction chatAction;
+  private IWorkbenchAction helpAction;
+  private OpenCheatSheetAction cheatSheetAction;
 
-	private IWorkbenchAction exitAction;
+  protected void makeActions( IWorkbenchWindow window ) {
+    exitAction = ActionFactory.QUIT.create( window );
+    register( exitAction );
+    aboutAction = ActionFactory.ABOUT.create( window );
+    register( aboutAction );
+    addContactAction = new AddContactAction( window );
+    register( addContactAction );
+    helpAction = ActionFactory.HELP_CONTENTS.create( window );
+    register( helpAction );
+    chatAction = new ChatAction( window );
+    register( chatAction );
+    cheatSheetAction = new OpenCheatSheetAction( "org.eclipsercp.hyperbola.help.cheatsheet" );
+    cheatSheetAction.setId( "org.eclipsercp.hyperbola.help.opencheatsheet" );
+    cheatSheetAction.setText( "Cheat Sheet" );
+    register( cheatSheetAction );
+  }
 
-	private IWorkbenchAction aboutAction;
+  protected void fillMenuBar( IMenuManager menuBar ) {
+    MenuManager hyperbolaMenu = new MenuManager( "&Hyperbola", "hyperbola" );
+    hyperbolaMenu.add( addContactAction );
+    hyperbolaMenu.add( chatAction );
+    hyperbolaMenu.add( new Separator() );
+    hyperbolaMenu.add( exitAction );
+    MenuManager helpMenu = new MenuManager( "&Help", "help" );
+    helpMenu.add( cheatSheetAction );
+    helpMenu.add( helpAction );
+    helpMenu.add( aboutAction );
+    menuBar.add( hyperbolaMenu );
+    menuBar.add( helpMenu );
+  }
 
-	private AddContactAction addContactAction;
+  protected void fillCoolBar( ICoolBarManager coolBar ) {
+    IToolBarManager toolbar = new ToolBarManager( coolBar.getStyle() );
+    coolBar.add( toolbar );
+    toolbar.add( addContactAction );
+    toolbar.add( chatAction );
+  }
 
-	private ChatAction chatAction;
-
-	protected void makeActions(IWorkbenchWindow window) {
-		exitAction = ActionFactory.QUIT.create(window);
-		register(exitAction);
-		aboutAction = ActionFactory.ABOUT.create(window);
-		register(aboutAction);
-		addContactAction = new AddContactAction(window);
-		register(addContactAction);
-		chatAction = new ChatAction(window);
-		register(chatAction);
-	}
-
-	protected void fillMenuBar(IMenuManager menuBar) {
-		MenuManager hyperbolaMenu = new MenuManager("&Hyperbola", "hyperbola");
-		hyperbolaMenu.add(addContactAction);
-		hyperbolaMenu.add(chatAction);
-		hyperbolaMenu.add(new Separator());
-		hyperbolaMenu.add(exitAction);
-		MenuManager helpMenu = new MenuManager("&Help", "help");
-		helpMenu.add(aboutAction);
-		menuBar.add(hyperbolaMenu);
-		menuBar.add(helpMenu);
-	}
-
-	protected void fillCoolBar(ICoolBarManager coolBar) {
-		IToolBarManager toolbar = new ToolBarManager(coolBar.getStyle());
-		coolBar.add(toolbar);
-		toolbar.add(addContactAction);
-		toolbar.add(chatAction);
-	}
-
-	protected void fillTrayItem(IMenuManager trayItem) {
-		trayItem.add(aboutAction);
-		trayItem.add(exitAction);
-	}
+  protected void fillTrayItem( IMenuManager trayItem ) {
+    trayItem.add( aboutAction );
+    trayItem.add( exitAction );
+  }
 }
