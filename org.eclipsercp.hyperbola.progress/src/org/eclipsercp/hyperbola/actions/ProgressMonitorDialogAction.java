@@ -30,7 +30,32 @@ public class ProgressMonitorDialogAction extends Action implements
 	}
 
 	public void run() {
-		// TODO Create a new  ProgressMonitorDialog
+		// Progress dialog
+		ProgressMonitorDialog pd = new ProgressMonitorDialog(window.getShell());
+		try {
+			pd.run(true, true, new IRunnableWithProgress() {
+				public void run(IProgressMonitor monitor) {
+					monitor.beginTask("Long running action", 100);
+					for (int i = 0; i < 10; i++) {
+						if (monitor.isCanceled())
+							return;
+						monitor.subTask("working " + i);
+						monitor.worked(10);
+						sleep(1000);
+					}
+					monitor.done();
+				}
+			});
+		} catch (InvocationTargetException e) {
+		} catch (InterruptedException e) {
+		}
+	}
+
+	private void sleep(long mills) {
+		try {
+			Thread.sleep(mills);
+		} catch (InterruptedException e) {
+		}
 	}
 
 	public void dispose() {

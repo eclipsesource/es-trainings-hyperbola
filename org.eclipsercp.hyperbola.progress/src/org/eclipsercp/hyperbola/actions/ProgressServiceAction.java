@@ -28,8 +28,33 @@ public class ProgressServiceAction extends Action implements
 	}
 
 	public void run() {
-		// TODO use the Progress Service...
-		// PlatformUI.getWorkbench().getProgressService().busyCursorWhile(...)
+		// Progress Service
+		try {
+			PlatformUI.getWorkbench().getProgressService().busyCursorWhile(
+					new IRunnableWithProgress() {
+						public void run(IProgressMonitor monitor) {
+							monitor.beginTask("Long running action", 100);
+							for (int i = 0; i < 10; i++) {
+								if (monitor.isCanceled())
+									return;
+								monitor.subTask("working on step " + i);
+								monitor.worked(10);
+								sleep(1000);
+							}
+							monitor.done();
+						}
+					});
+		} catch (InvocationTargetException e1) {
+		} catch (InterruptedException e1) {
+		}
+
+	}
+
+	private void sleep(long mills) {
+		try {
+			Thread.sleep(mills);
+		} catch (InterruptedException e) {
+		}
 	}
 
 	public void dispose() {

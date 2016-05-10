@@ -56,12 +56,13 @@
 	    <perspectiveExtension
 	          targetID="org.eclipsercp.hyperbola.perspective">
 	          <view
-	                id="org.eclipsercp.hyperbola.views.progress"
-	                minimized="false" 
-	                relationship="bottom"
-	                relative="org.eclipse.ui.editorss" 
-	                
-	                visible="true">
+                 id="org.eclipsercp.hyperbola.views.progress"
+                 minimized="false"
+                 ratio="0.7"
+                 relationship="bottom"
+                 relative="org.eclipse.ui.editorss"
+                 standalone="true"
+                 visible="true">
 	          </view>
 	    </perspectiveExtension>
 	</extension>

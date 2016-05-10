@@ -26,7 +26,19 @@ public class BusyIndicatorAction extends Action implements
 	}
 
 	public void run() {
-		// TODO use BusyIndicator.showWhile...
+		// Busy cursor
+		BusyIndicator.showWhile(window.getShell().getDisplay(), new Runnable() {
+			public void run() {
+				sleep(2000);
+			}
+		});
+	}
+
+	private void sleep(long mills) {
+		try {
+			Thread.sleep(mills);
+		} catch (InterruptedException e) {
+		}
 	}
 
 	public void dispose() {

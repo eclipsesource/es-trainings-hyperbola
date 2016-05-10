@@ -27,7 +27,32 @@ public class JobAction extends Action implements
 	}
 
 	public void run() {
-		// TODO create a new Job and schedule it
+		// Job
+		Job job = new Job("long running action") {
+			protected IStatus run(
+					IProgressMonitor monitor) {
+				monitor.beginTask("Long running action", 100);
+				for (int i = 0; i < 10; i++) {
+					if (monitor.isCanceled())
+						return Status.CANCEL_STATUS;
+					monitor.subTask("working on step " + i);
+					monitor.worked(10);
+					JobAction.this.sleep(1000);
+					System.out.println("working");
+				}
+				monitor.done();
+				return Status.OK_STATUS;
+			}
+		};
+		job.setUser(true);
+		job.schedule();
+	}
+
+	private void sleep(long mills) {
+		try {
+			Thread.sleep(mills);
+		} catch (InterruptedException e) {
+		}
 	}
 
 	public void dispose() {
