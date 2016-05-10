@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Hyperbola Chat Client" uid="hyperbola" id="org.eclipsercp.hyperbola.product" application="org.eclipsercp.hyperbola.application" version="1.0.0" useFeatures="true" includeLaunchers="true">
+<product name="Hyperbola Chat Client" uid="hyperbola" id="org.eclipsercp.hyperbola.product" application="org.eclipsercp.hyperbola.application" version="2.0.0" useFeatures="true" includeLaunchers="true">
 
    <aboutInfo>
       <image path="/org.eclipsercp.hyperbola/icons/about.gif"/>
@@ -70,12 +70,13 @@
       <plugin id="org.eclipse.ui.carbon" fragment="true"/>
       <plugin id="org.eclipse.ui.workbench"/>
       <plugin id="org.eclipse.update.configurator"/>
-      <plugin id="org.eclipsercp.hyperbola" fragment=""/>
+      <plugin id="org.eclipsercp.hyperbola"/>
    </plugins>
 
    <features>
       <feature id="org.eclipsercp.hyperbola.feature"/>
       <feature id="org.eclipse.rcp"/>
+      <feature id="org.eclipse.equinox.p2.rcp.feature"/>
    </features>
 
 

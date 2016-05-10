@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Hyperbola Plug-in
 Bundle-SymbolicName: org.eclipsercp.hyperbola; singleton:=true
 Bundle-Vendor: eclipsercp.org
-Bundle-Version: 1.0.0
+Bundle-Version: 2.0.0.qualifier
 Bundle-Localization: plugin
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ui

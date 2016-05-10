@@ -38,6 +38,8 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 	private IWorkbenchAction aboutAction;
 
 	private AddContactAction addContactAction;
+	
+	private IWorkbenchAction preferenceAction;
 
 	private ChatAction chatAction;
 
@@ -48,6 +50,8 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 		register(aboutAction);
 		addContactAction = new AddContactAction(window);
 		register(addContactAction);
+		preferenceAction = ActionFactory.PREFERENCES.create(window);
+		register(preferenceAction);
 		chatAction = new ChatAction(window);
 		register(chatAction);
 	}
@@ -60,6 +64,7 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 		hyperbolaMenu.add(exitAction);
 		MenuManager helpMenu = new MenuManager("&Help", "help");
 		helpMenu.add(aboutAction);
+		helpMenu.add(preferenceAction);
 		menuBar.add(hyperbolaMenu);
 		menuBar.add(helpMenu);
 	}
